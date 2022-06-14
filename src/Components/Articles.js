@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ArticlesPlaycard from "./ArticlesPlaycard";
 import { getArticles } from "./Utils/Axios";
 import ClipLoader from "react-spinners/ClipLoader";
-import Box from "@mui/material/Box";
+
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
@@ -31,11 +31,11 @@ const Articles = () => {
   }, []);
 
   return (
-    <div>
+    <div className="ArticlesList">
       {isLoading ? (
         <ClipLoader color={"#36D7B7"} loading={isLoading} size={150} />
       ) : (
-        <div className="ArticlesList">
+        <div>
           <Grid container spacing={2}>
             {articles.map((article) => {
               return (

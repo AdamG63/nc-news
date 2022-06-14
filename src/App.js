@@ -5,6 +5,8 @@ import { useState } from "react";
 import Navbar from "./Components/Navbar";
 import Articles from "./Components/Articles";
 import SingleArticle from "./Components/SingleArticle";
+import Topics from "./Components/Topics";
+import TopicsByTopic from "./Components/TopicsByTopic";
 
 function App() {
   const [selectUser, setSelectUser] = useState({
@@ -21,6 +23,8 @@ function App() {
         <Route path="/" element={<Articles />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
+        <Route path="/topics" element={<Topics />} />
+        <Route path="/topics/:slug" element={<TopicsByTopic />} />
       </Routes>
     </BrowserRouter>
   );
