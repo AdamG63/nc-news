@@ -57,7 +57,7 @@ const SingleArticle = () => {
             <Grid item xs={6}>
               <Item>
                 Date:
-                {singleArticle.created_at}
+                {singleArticle.created_at.slice(0, 10)}
               </Item>
             </Grid>
             <Grid item xs={12}>

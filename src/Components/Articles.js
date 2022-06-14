@@ -39,16 +39,11 @@ const Articles = () => {
           <Grid container spacing={2}>
             {articles.map((article) => {
               return (
-                <>
-                  <Grid xs={12} sm={6} md={4}>
-                    <Item>
-                      <ArticlesPlaycard
-                        key={article.article_id}
-                        article={article}
-                      />
-                    </Item>
-                  </Grid>
-                </>
+                <Grid item xs={12} sm={6} md={4} key={article.article_id}>
+                  <Item>
+                    <ArticlesPlaycard article={article} />
+                  </Item>
+                </Grid>
               );
             })}
           </Grid>
