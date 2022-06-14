@@ -35,27 +35,24 @@ const Articles = () => {
       {isLoading ? (
         <ClipLoader color={"#36D7B7"} loading={isLoading} size={150} />
       ) : (
-        <ul className="ArticlesList">
-          {articles.map((article) => {
-            return (
-              <>
-                <ArticlesPlaycard key={article.article_id} article={article} />
-                <Box sx={{ flexGrow: 1 }}>
-                  <Grid container spacing={2}>
-                    <Grid xs={12} sm={6} md={4}>
-                      <Item>
-                        <ArticlesPlaycard
-                          key={article.article_id}
-                          article={article}
-                        />
-                      </Item>
-                    </Grid>
+        <div className="ArticlesList">
+          <Grid container spacing={2}>
+            {articles.map((article) => {
+              return (
+                <>
+                  <Grid xs={12} sm={6} md={4}>
+                    <Item>
+                      <ArticlesPlaycard
+                        key={article.article_id}
+                        article={article}
+                      />
+                    </Item>
                   </Grid>
-                </Box>
-              </>
-            );
-          })}
-        </ul>
+                </>
+              );
+            })}
+          </Grid>
+        </div>
       )}
     </div>
   );
