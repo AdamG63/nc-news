@@ -18,17 +18,22 @@ const SingleArticle = () => {
   const [singleArticle, setSingleArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
+  const [isError, setIsError] = useState(null);
 
   useEffect(() => {
     getArticleById(article_id)
-      .then((response) => {
-        return response;
-      })
       .then((body) => {
         setSingleArticle(body.data.article);
         setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsError(err.response.data);
       });
-  }, []);
+  }, [article_id]);
+
+  if (isError) {
+    return <p className="Error">Oh no, an error occured!</p>;
+  }
 
   return (
     <div className="SingleItem">

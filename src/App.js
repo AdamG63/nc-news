@@ -18,7 +18,7 @@ function App() {
       <Header />
       <Navbar selectUser={selectUser} />
       <Routes>
-        <Route path="/articles" element={<Articles />} />
+        <Route path="/" element={<Articles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
       </Routes>
     </BrowserRouter>

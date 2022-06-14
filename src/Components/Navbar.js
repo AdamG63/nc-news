@@ -1,17 +1,3 @@
-// import { Link } from "react-router-dom";
-
-// function Navbar({ selectUser }) {
-//   return (
-//     <div>
-//       <nav className="Navbar">
-//         <Link to="/articles">Articles</Link>
-//         <Link to="/topics">Topics</Link>
-//         <span>{selectUser.username}, welcome</span>
-//       </nav>
-//     </div>
-//   );
-// }
-
 import React, { useState } from "react";
 
 // ICONS
