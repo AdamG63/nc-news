@@ -43,11 +43,16 @@ const SingleArticle = () => {
                 <h2>{singleArticle.title}</h2>
               </Item>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={5}>
               <Item>Author: {singleArticle.author}</Item>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={4}>
               <Item>{singleArticle.created_at.slice(0, 10)}</Item>
+            </Grid>
+            <Grid item xs={3}>
+              <Item>
+                <Votes pre_votes={singleArticle.votes} />
+              </Item>
             </Grid>
             <Grid item xs={12}>
               <Item>
