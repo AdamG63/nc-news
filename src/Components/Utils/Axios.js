@@ -31,7 +31,12 @@ export const patchArticleById = (article_id) => {
   return newsApi
     .patch(`/articles/${article_id}`, { inc_votes: 1 })
     .then((response) => {
-      console.log(response.data.article);
       return response;
     });
+};
+
+export const getComment = (article_id) => {
+  return newsApi.get(`/articles/${article_id}/comments`).then((response) => {
+    return response.data;
+  });
 };

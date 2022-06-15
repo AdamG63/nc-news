@@ -5,6 +5,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import Grid from "@mui/material/Grid";
 import Item from "./Utils/GridCss";
 import Votes from "./Votes";
+import Comments from "./Comments";
 
 const SingleArticle = () => {
   const [singleArticle, setSingleArticle] = useState([]);
@@ -49,6 +50,7 @@ const SingleArticle = () => {
             <Grid item xs={4}>
               <Item>{singleArticle.created_at.slice(0, 10)}</Item>
             </Grid>
+
             <Grid item xs={3}>
               <Item>
                 <Votes pre_votes={singleArticle.votes} />
@@ -57,6 +59,14 @@ const SingleArticle = () => {
             <Grid item xs={12}>
               <Item>
                 <p>{singleArticle.body}</p>
+              </Item>
+            </Grid>
+            <Grid item xs={12}>
+              <Item>
+                <div>
+                  <span style={{ fontWeight: "bold" }}>Comments</span>
+                </div>
+                <Comments />
               </Item>
             </Grid>
           </Grid>
