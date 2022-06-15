@@ -26,3 +26,12 @@ export const getArticleBytopic = (slug) => {
     return response.data.articles;
   });
 };
+
+export const patchArticleById = (article_id) => {
+  return newsApi
+    .patch(`/articles/${article_id}`, { inc_votes: 1 })
+    .then((response) => {
+      console.log(response.data.article);
+      return response;
+    });
+};
