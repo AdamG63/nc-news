@@ -2,17 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "./Utils/Axios";
 import ClipLoader from "react-spinners/ClipLoader";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import { styled } from "@mui/material/styles";
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
+import Item from "./Utils/GridCss";
+import Votes from "./Votes";
 
 const SingleArticle = () => {
   const [singleArticle, setSingleArticle] = useState([]);
@@ -55,10 +47,7 @@ const SingleArticle = () => {
               <Item>Author: {singleArticle.author}</Item>
             </Grid>
             <Grid item xs={6}>
-              <Item>
-                Date:
-                {singleArticle.created_at}
-              </Item>
+              <Item>{singleArticle.created_at.slice(0, 10)}</Item>
             </Grid>
             <Grid item xs={12}>
               <Item>

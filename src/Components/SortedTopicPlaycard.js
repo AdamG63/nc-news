@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-const ArticlesPlaycard = ({ article }) => {
+const SortedTopicsPlaycard = ({ article }) => {
   return (
-    <li className="ArticlesPlaycard">
+    <li className="SortedArticlesPlaycard">
       <Link
         to={`/articles/${article.article_id}`}
         style={{ textDecoration: "none" }}
@@ -13,4 +13,4 @@ const ArticlesPlaycard = ({ article }) => {
   );
 };
 
-export default ArticlesPlaycard;
+export default SortedTopicsPlaycard;

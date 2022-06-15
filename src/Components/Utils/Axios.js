@@ -14,3 +14,15 @@ export const getArticleById = (article_id) => {
     return response;
   });
 };
+
+export const getTopics = () => {
+  return newsApi.get("/topics").then((response) => {
+    return response.data.topics;
+  });
+};
+
+export const getArticleBytopic = (slug) => {
+  return newsApi.get(`/articles?topic=${slug}`).then((response) => {
+    return response.data.articles;
+  });
+};

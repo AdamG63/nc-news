@@ -92,9 +92,28 @@ span {
   align-items: flex-start;
   padding: 2rem;
   list-style: none;
+
+  /* text-align: center; */
 }
 
 .Error {
   text-align: center;
+  padding: 3rem;
+  font-size: 2rem;
+}
+
+.TopicsList {
+  text-align: center;
+  list-style: none;
   padding: 2rem;
+}
+
+.TopicsByTopic {
+  text-align: center;
+  padding: 2rem;
+}
+
+.SortedArticlesPlaycard {
+  text-align: center;
+  list-style: none;
 }
