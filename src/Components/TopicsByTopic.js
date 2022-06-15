@@ -4,31 +4,46 @@ import Grid from "@mui/material/Grid";
 import SortedTopicsPlaycard from "./SortedTopicPlaycard";
 import { useParams } from "react-router-dom";
 import { getArticleBytopic } from "./Utils/Axios";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const TopicsByTopic = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [sortedArticles, setSortedArticles] = useState([]);
+  const [error, setError] = useState(null);
   const { slug } = useParams();
 
   useEffect(() => {
-    getArticleBytopic(slug).then((response) => {
-      setSortedArticles(response);
-    });
+    getArticleBytopic(slug)
+      .then((response) => {
+        setSortedArticles(response);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.response.data);
+      });
   }, [slug]);
+
+  if (error) {
+    return <p className="Error">Oh no, an error occured!</p>;
+  }
 
   return (
     <div className="TopicsByTopic">
-      <Grid container spacing={2}>
-        {sortedArticles.map((article) => {
-          return (
-            <Grid item xs={12} sm={6} md={4} key={article.article_id}>
-              <Item>
-                <SortedTopicsPlaycard article={article} />
-              </Item>
-            </Grid>
-          );
-        })}
-      </Grid>
+      {isLoading ? (
+        <ClipLoader color={"#36D7B7"} loading={isLoading} size={150} />
+      ) : (
+        <Grid container spacing={2}>
+          {sortedArticles.map((article) => {
+            return (
+              <Grid item xs={12} sm={6} md={4} key={article.article_id}>
+                <Item>
+                  <SortedTopicsPlaycard article={article} />
+                </Item>
+              </Grid>
+            );
+          })}
+        </Grid>
+      )}
     </div>
   );
 };

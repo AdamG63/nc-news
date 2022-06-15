@@ -92,12 +92,14 @@ span {
   align-items: flex-start;
   padding: 2rem;
   list-style: none;
+
   /* text-align: center; */
 }
 
 .Error {
   text-align: center;
-  padding: 2rem;
+  padding: 3rem;
+  font-size: 2rem;
 }
 
 .TopicsList {
