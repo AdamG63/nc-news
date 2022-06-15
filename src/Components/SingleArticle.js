@@ -4,6 +4,7 @@ import { getArticleById } from "./Utils/Axios";
 import ClipLoader from "react-spinners/ClipLoader";
 import Grid from "@mui/material/Grid";
 import Item from "./Utils/GridCss";
+import Votes from "./Votes";
 
 const SingleArticle = () => {
   const [singleArticle, setSingleArticle] = useState([]);
@@ -46,10 +47,7 @@ const SingleArticle = () => {
               <Item>Author: {singleArticle.author}</Item>
             </Grid>
             <Grid item xs={6}>
-              <Item>
-                Date:
-                {singleArticle.created_at.slice(0, 10)}
-              </Item>
+              <Item>{singleArticle.created_at.slice(0, 10)}</Item>
             </Grid>
             <Grid item xs={12}>
               <Item>
