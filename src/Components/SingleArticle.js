@@ -6,12 +6,14 @@ import Grid from "@mui/material/Grid";
 import Item from "./Utils/GridCss";
 import Votes from "./Votes";
 import Comments from "./Comments";
+import AddComment from "./AddComment";
 
-const SingleArticle = () => {
+const SingleArticle = ({ selectUser }) => {
   const [singleArticle, setSingleArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
   const [isError, setIsError] = useState(null);
+  const [newComment, setNewComment] = useState({});
 
   useEffect(() => {
     getArticleById(article_id)
@@ -66,7 +68,15 @@ const SingleArticle = () => {
                 <div>
                   <span style={{ fontWeight: "bold" }}>Comments</span>
                 </div>
-                <Comments />
+                <Comments newComment={newComment} selectUser={selectUser} />
+              </Item>
+            </Grid>
+            <Grid item xs={12}>
+              <Item>
+                <AddComment
+                  selectUser={selectUser}
+                  setNewComment={setNewComment}
+                />
               </Item>
             </Grid>
           </Grid>

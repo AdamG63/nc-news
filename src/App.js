@@ -10,10 +10,10 @@ import TopicsByTopic from "./Components/TopicsByTopic";
 
 function App() {
   const [selectUser, setSelectUser] = useState({
-    username: "butter_bridge",
-    name: "jonny",
+    username: "tickle122",
+    name: "Tom Tickle",
     avatar_url:
-      "https://www.healthytherapies.com/wp-content/uploads/2016/06/Lime3.jpg",
+      "https://vignette.wikia.nocookie.net/mrmen/images/d/d6/Mr-Tickle-9a.png/revision/latest?cb=20180127221953",
   });
   return (
     <BrowserRouter>
@@ -22,7 +22,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Articles />} />
         <Route path="/articles" element={<Articles />} />
-        <Route path="/articles/:article_id" element={<SingleArticle />} />
+        <Route
+          path="/articles/:article_id"
+          element={<SingleArticle selectUser={selectUser} />}
+        />
         <Route path="/topics" element={<Topics />} />
         <Route path="/topics/:slug" element={<TopicsByTopic />} />
       </Routes>
