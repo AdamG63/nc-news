@@ -68,7 +68,7 @@ const SingleArticle = ({ selectUser }) => {
                 <div>
                   <span style={{ fontWeight: "bold" }}>Comments</span>
                 </div>
-                <Comments newComment={newComment} />
+                <Comments newComment={newComment} selectUser={selectUser} />
               </Item>
             </Grid>
             <Grid item xs={12}>

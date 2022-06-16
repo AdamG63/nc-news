@@ -48,7 +48,6 @@ export const postComment = (article_id, addComment, isAuthor) => {
       username: isAuthor,
     })
     .then((response) => {
-      console.log(response);
       return response;
     })
     .catch((err) => {

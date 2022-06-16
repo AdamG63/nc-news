@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { getComment } from "./Utils/Axios";
 import AddComment from "./AddComment";
 
-const Comments = ({ newComment }) => {
+const Comments = ({ newComment, selectUser }) => {
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
 
@@ -19,7 +19,11 @@ const Comments = ({ newComment }) => {
       <ul>
         {comments.map((comment) => {
           return (
-            <CommentsPlaycard comment={comment} key={comment.comment_id} />
+            <CommentsPlaycard
+              comment={comment}
+              key={comment.comment_id}
+              selectUser={selectUser}
+            />
           );
         })}
       </ul>
