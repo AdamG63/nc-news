@@ -40,3 +40,18 @@ export const getComment = (article_id) => {
     return response.data;
   });
 };
+
+export const postComment = (article_id, addComment, isAuthor) => {
+  return newsApi
+    .post(`/articles/${article_id}/comments`, {
+      body: addComment,
+      username: isAuthor,
+    })
+    .then((response) => {
+      console.log(response);
+      return response;
+    })
+    .catch((err) => {
+      console.dir(err);
+    });
+};

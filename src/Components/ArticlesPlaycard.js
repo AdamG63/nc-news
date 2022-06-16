@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const ArticlesPlaycard = ({ article }) => {
+  console.log(article);
   return (
     <li className="ArticlesPlaycard">
       <Link

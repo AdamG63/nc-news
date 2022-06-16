@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import CommentsPlaycard from "./CommentsPlaycard";
 import { useParams } from "react-router-dom";
 import { getComment } from "./Utils/Axios";
-const Comments = () => {
+import AddComment from "./AddComment";
+
+const Comments = ({ newComment }) => {
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
 
@@ -10,7 +12,7 @@ const Comments = () => {
     getComment(article_id).then((response) => {
       setComments(response);
     });
-  }, [article_id]);
+  }, [article_id, newComment]);
 
   return (
     <div className="Comments">
