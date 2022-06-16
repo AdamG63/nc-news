@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import CommentsPlaycard from "./CommentsPlaycard";
 import { useParams } from "react-router-dom";
-import { getComment } from "./Utils/Axios";
-import AddComment from "./AddComment";
+import { deleteComment, getComment } from "./Utils/Axios";
 
 const Comments = ({ newComment, selectUser }) => {
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
+  const [deleted, setDeleted] = useState({});
 
   useEffect(() => {
     getComment(article_id).then((response) => {
       setComments(response);
     });
-  }, [article_id, newComment]);
+  }, [article_id, newComment, deleted]);
 
   return (
     <div className="Comments">
@@ -23,6 +23,7 @@ const Comments = ({ newComment, selectUser }) => {
               comment={comment}
               key={comment.comment_id}
               selectUser={selectUser}
+              setDeleted={setDeleted}
             />
           );
         })}

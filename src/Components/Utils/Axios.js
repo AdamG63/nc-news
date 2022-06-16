@@ -54,3 +54,10 @@ export const postComment = (article_id, addComment, isAuthor) => {
       console.dir(err);
     });
 };
+
+export const deleteComment = (comment_id) => {
+  return newsApi.delete(`/comments/${comment_id}`).then((response) => {
+    console.log(response);
+    return response;
+  });
+};
