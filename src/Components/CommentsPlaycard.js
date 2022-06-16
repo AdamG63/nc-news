@@ -9,6 +9,8 @@ const CommentsPlaycard = ({ comment, selectUser, setDeleted }) => {
     });
   };
 
+  console.log(comment.author, selectUser.username);
+
   return (
     <p className="CommentsPlaycard">
       <img src={selectUser.avatar_url} alt={selectUser.name} width="40px"></img>
@@ -17,7 +19,12 @@ const CommentsPlaycard = ({ comment, selectUser, setDeleted }) => {
       <br></br>
       <span style={{ fontWeight: "bold" }}>Votes - {comment.votes}</span>
       <br></br>
-      <button onClick={HandleDelete}>Delete</button>
+      <button
+        onClick={HandleDelete}
+        disabled={comment.author !== selectUser.username}
+      >
+        Delete
+      </button>
     </p>
   );
 };
