@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import CommentsPlaycard from "./CommentsPlaycard";
 import { useParams } from "react-router-dom";
-import { deleteComment, getComment } from "./Utils/Axios";
+import { getComment } from "./Utils/Axios";
+import Divider from "@mui/material/Divider";
 
 const Comments = ({ newComment, selectUser }) => {
   const [comments, setComments] = useState([]);
@@ -19,12 +20,15 @@ const Comments = ({ newComment, selectUser }) => {
       <ul>
         {comments.map((comment) => {
           return (
-            <CommentsPlaycard
-              comment={comment}
-              key={comment.comment_id}
-              selectUser={selectUser}
-              setDeleted={setDeleted}
-            />
+            <>
+              <CommentsPlaycard
+                comment={comment}
+                key={comment.comment_id}
+                selectUser={selectUser}
+                setDeleted={setDeleted}
+              />
+              <Divider variant="fullWidth" style={{ margin: "30px 0" }} />
+            </>
           );
         })}
       </ul>
