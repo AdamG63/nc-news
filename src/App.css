@@ -92,6 +92,7 @@ span {
   align-items: flex-start;
   padding: 2rem;
   list-style: none;
+  text-align: center;
 }
 
 .Error {

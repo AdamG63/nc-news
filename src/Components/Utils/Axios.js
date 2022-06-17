@@ -3,10 +3,14 @@ const axios = require("axios");
 const newsApi = axios.create({
   baseURL: "https://adams-api.herokuapp.com/api",
 });
-export const getArticles = () => {
-  return newsApi.get("/articles").then((response) => {
-    return response.data.articles;
-  });
+export const getArticles = (order, sortBy) => {
+  console.log(order, "axios");
+  return newsApi
+    .get("/articles", { params: { order_by: order } })
+
+    .then((response) => {
+      return response.data.articles;
+    });
 };
 
 export const getArticleById = (article_id) => {
@@ -60,3 +64,15 @@ export const deleteComment = (comment_id) => {
     return response;
   });
 };
+
+// export const sortArticles = (sortBy) => {
+//   return newsApi
+//     .get(`/articles?sort_by=${sortBy}`)
+//     .then((response) => {
+//       console.log(response, "axios");
+//       return response.data.articles;
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };

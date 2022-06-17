@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { postComment } from "./Utils/Axios";
 import { useParams } from "react-router-dom";
 
