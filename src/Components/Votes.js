@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { patchArticleById } from "./Utils/Axios";
 import { useParams } from "react-router-dom";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
 const Votes = ({ pre_votes }) => {
   const [votes, setVotes] = useState(pre_votes);
@@ -24,7 +25,7 @@ const Votes = ({ pre_votes }) => {
   return (
     <>
       <button onClick={handleclick} disabled={clicked}>
-        Vote
+        <ThumbUpIcon />
       </button>
       <p>{votes} votes</p>
     </>

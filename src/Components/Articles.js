@@ -30,6 +30,10 @@ const Articles = () => {
       });
   }, []);
 
+  const HandleClick = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="ArticlesList">
       {isLoading ? (
