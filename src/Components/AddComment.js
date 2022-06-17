@@ -24,15 +24,16 @@ const AddComment = ({ selectUser, setNewComment }) => {
     <div>
       <form autoComplete="off" onSubmit={HandleSubmit}>
         <label>
-          <input
-            type="text"
-            placeholder="Add comment"
-            onChange={HandleChange}
-            value={addComment}
-            required
-          />
-
-          <button type="submit">Submit</button>
+          <h1 className="SearchBox">
+            <input
+              type="text"
+              placeholder="Add comment"
+              onChange={HandleChange}
+              value={addComment}
+              required
+              className="search-bar"
+            />
+          </h1>
         </label>
       </form>
     </div>

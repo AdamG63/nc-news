@@ -120,3 +120,21 @@ span {
   list-style: none;
   text-align: left;
 }
+
+.SearchBox .search-bar {
+  display: block;
+  width: 92%;
+  padding: 15px;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 0px 0px 16px 16px;
+  margin-top: -25px;
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.15);
+  color: #6b5f5f;
+  font-size: 20px;
+  transition: 0.4 ease;
+  margin: 0 0 75px;
+}
