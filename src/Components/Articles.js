@@ -25,10 +25,6 @@ const Articles = () => {
       });
   }, [sortByCat, sorted]);
 
-  const HandleClick = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <div className="ArticlesList">
       {isLoading ? (

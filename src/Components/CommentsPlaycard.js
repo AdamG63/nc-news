@@ -1,5 +1,6 @@
 import { deleteComment } from "./Utils/Axios";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Votes from "./Votes";
 
 const CommentsPlaycard = ({ comment, selectUser, setDeleted }) => {
   const HandleDelete = (e) => {
@@ -18,6 +19,7 @@ const CommentsPlaycard = ({ comment, selectUser, setDeleted }) => {
       <br></br>
       <span style={{ fontWeight: "bold" }}>Votes {comment.votes}</span>
       <br></br>
+      <Votes />
       {comment.author !== selectUser.username ? (
         ""
       ) : (

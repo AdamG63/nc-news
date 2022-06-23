@@ -7,54 +7,71 @@ import { getArticles } from "./Utils/Axios";
 import { useState } from "react";
 
 const MenuPopupState = ({ setSorted, setSortByCat }) => {
-  const [sortBy, setSortBy] = useState("");
   const [order, setOrder] = useState("");
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick1 = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleClick = () => {
     getArticles(order).then((response) => {
-      setSorted(true);
       setSortByCat(response);
+      setSorted(true);
     });
   };
 
   return (
-    <PopupState variant="popover" popupId="demo-popup-menu">
-      {(popupState) => (
-        <React.Fragment>
-          <Button variant="contained" {...bindTrigger(popupState)}>
-            Sort
-          </Button>
-          <Menu {...bindMenu(popupState)}>
-            <MenuItem
-              onClick={() => {
-                setOrder("desc");
-                handleClick();
-              }}
-            >
-              Date (New)
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                setOrder("asc");
-                handleClick();
-              }}
-            >
-              Date (Old)
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                setSortBy("comments");
+    <div>
+      <Button
+        id="demo-positioned-button"
+        aria-controls={open ? "demo-positioned-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick1}
+      >
+        Order
+      </Button>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+      >
+        <MenuItem
+          onClick={() => {
+            setOrder("desc");
+            handleClick();
+            handleClose();
+          }}
+        >
+          Date New
+        </MenuItem>
 
-                handleClick();
-              }}
-            >
-              Comments
-            </MenuItem>
-            <MenuItem onClick={popupState.close}>Votes</MenuItem>
-          </Menu>
-        </React.Fragment>
-      )}
-    </PopupState>
+        <MenuItem
+          onClick={() => {
+            setOrder("asc");
+            handleClick();
+            handleClose();
+          }}
+        >
+          Date Old
+        </MenuItem>
+      </Menu>
+    </div>
   );
 };
 

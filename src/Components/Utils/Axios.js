@@ -3,8 +3,8 @@ const axios = require("axios");
 const newsApi = axios.create({
   baseURL: "https://adams-api.herokuapp.com/api",
 });
-export const getArticles = (order, sortBy) => {
-  console.log(order, "axios");
+export const getArticles = (order) => {
+  console.log(order);
   return newsApi
     .get("/articles", { params: { order_by: order } })
 
@@ -64,15 +64,3 @@ export const deleteComment = (comment_id) => {
     return response;
   });
 };
-
-// export const sortArticles = (sortBy) => {
-//   return newsApi
-//     .get(`/articles?sort_by=${sortBy}`)
-//     .then((response) => {
-//       console.log(response, "axios");
-//       return response.data.articles;
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };

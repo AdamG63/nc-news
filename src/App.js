@@ -16,13 +16,25 @@ function App() {
     avatar_url:
       "https://vignette.wikia.nocookie.net/mrmen/images/d/d6/Mr-Tickle-9a.png/revision/latest?cb=20180127221953",
   });
+  // const [sorted, setSorted] = useState(false);
+  // const [sortByCat, setSortByCat] = useState([]);
   return (
     <BrowserRouter>
       <Header />
       <Navbar selectUser={selectUser} />
       <Routes>
         <Route path="/" element={<Articles />} />
-        <Route path="/articles" element={<Articles />} />
+        <Route
+          path="/articles"
+          element={
+            <Articles
+            // setSorted={setSorted}
+            // setSortByCat={setSortByCat}
+            // sorted={sorted}
+            // sortByCat={sortByCat}
+            />
+          }
+        />
         <Route
           path="/articles/:article_id"
           element={<SingleArticle selectUser={selectUser} />}
