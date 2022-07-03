@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { postComment } from "./Utils/Axios";
 import { useParams } from "react-router-dom";
+import { confetti } from "party-js";
 
 const AddComment = ({ selectUser, setNewComment }) => {
   const { article_id } = useParams();
@@ -13,6 +14,7 @@ const AddComment = ({ selectUser, setNewComment }) => {
   };
   const HandleSubmit = (e) => {
     e.preventDefault();
+    confetti(e.target);
     postComment(article_id, addComment, isAuthor).then((response) => {
       alert("Comment has been posted");
       setNewComment(response);

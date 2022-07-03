@@ -20,15 +20,14 @@ const Comments = ({ newComment, selectUser }) => {
       <ul>
         {comments.map((comment) => {
           return (
-            <>
+            <li key={comment.comment_id}>
               <CommentsPlaycard
                 comment={comment}
-                key={comment.comment_id}
                 selectUser={selectUser}
                 setDeleted={setDeleted}
               />
               <Divider variant="fullWidth" style={{ margin: "30px 0" }} />
-            </>
+            </li>
           );
         })}
       </ul>

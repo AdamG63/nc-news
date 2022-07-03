@@ -9,17 +9,20 @@ import { Menu } from "@mui/material";
 import MenuPopupState from "./DropDown";
 import { getArticles } from "./Utils/Axios";
 
-const TopicsByTopic = ({ setSorted, setSortByCat, sorted, sortByCat }) => {
+const TopicsByTopic = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [sortedArticles, setSortedArticles] = useState([]);
+  // const [sortedArticles, setSortedArticles] = useState([]);
   const [error, setError] = useState(null);
   const { slug } = useParams();
+  const [sortCat, setSortCat] = useState([]);
+  const [sorted, setSorted] = useState(false);
 
   useEffect(() => {
     getArticleBytopic(slug)
       .then((response) => {
-        setSortedArticles(response);
+        // setSortedArticles(response);
         setIsLoading(false);
+        setSortCat(response);
       })
       .catch((err) => {
         setError(err.response.data);
@@ -36,9 +39,13 @@ const TopicsByTopic = ({ setSorted, setSortByCat, sorted, sortByCat }) => {
         <ClipLoader color={"#36D7B7"} loading={isLoading} size={150} />
       ) : (
         <>
-          <MenuPopupState setSorted={setSorted} setSortByCat={setSortByCat} />
+          <MenuPopupState
+            setSorted={setSorted}
+            setSortCat={setSortCat}
+            slug={slug}
+          />
           <Grid container spacing={2}>
-            {sortedArticles.map((article) => {
+            {sortCat.map((article) => {
               return (
                 <Grid item xs={12} sm={6} md={4} key={article.article_id}>
                   <Item>

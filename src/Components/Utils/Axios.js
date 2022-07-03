@@ -25,10 +25,15 @@ export const getTopics = () => {
   });
 };
 
-export const getArticleBytopic = (slug) => {
-  return newsApi.get(`/articles?topic=${slug}`).then((response) => {
-    return response.data.articles;
-  });
+export const getArticleBytopic = (slug, order) => {
+  console.log(order);
+  return newsApi
+    .get(`/articles?topic=${slug}`, { params: { order_by: order } })
+
+    .then((response) => {
+      // console.log(response.data.articles);
+      return response.data.articles;
+    });
 };
 
 export const patchArticleById = (article_id) => {

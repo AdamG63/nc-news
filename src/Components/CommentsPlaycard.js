@@ -12,14 +12,13 @@ const CommentsPlaycard = ({ comment, selectUser, setDeleted }) => {
   };
 
   return (
-    <p className="CommentsPlaycard">
+    <div className="CommentsPlaycard">
       <img src={selectUser.avatar_url} alt={selectUser.name} width="40px"></img>
       <span style={{ fontWeight: "bold" }}>{comment.author}</span>
       <br></br> {comment.body}
       <br></br>
       <span style={{ fontWeight: "bold" }}>Votes {comment.votes}</span>
       <br></br>
-      <Votes />
       {comment.author !== selectUser.username ? (
         ""
       ) : (
@@ -30,7 +29,7 @@ const CommentsPlaycard = ({ comment, selectUser, setDeleted }) => {
           <DeleteIcon />
         </button>
       )}
-    </p>
+    </div>
   );
 };
 

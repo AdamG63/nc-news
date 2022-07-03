@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { patchArticleById } from "./Utils/Axios";
 import { useParams } from "react-router-dom";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import ThumbDownIcon from "@mui/icons-material/ThumbDown";
+import { confetti } from "party-js";
 
 const Votes = ({ pre_votes }) => {
   const [votes, setVotes] = useState(pre_votes);
@@ -11,22 +10,13 @@ const Votes = ({ pre_votes }) => {
   const [err, setErr] = useState(null);
   const { article_id } = useParams();
 
-  const handleclick = () => {
+  const handleclick = (event) => {
+    confetti(event.target);
     setVotes((currVotes) => (downClicked ? currVotes + 2 : currVotes + 1));
     setUpClicked(true);
     setDownClicked(false);
     patchArticleById(article_id).catch((err) => {
       setVotes((currVotes) => currVotes - 1);
-      setErr("Something went wrong, please try again.");
-    });
-  };
-
-  const HandleDownVote = () => {
-    setVotes((currVotes) => (upClicked ? currVotes - 2 : currVotes - 1));
-    setUpClicked(false);
-    setDownClicked(true);
-    patchArticleById(article_id).catch((err) => {
-      setVotes((currVotes) => currVotes + 1);
       setErr("Something went wrong, please try again.");
     });
   };
@@ -38,12 +28,12 @@ const Votes = ({ pre_votes }) => {
   return (
     <>
       <button onClick={handleclick} disabled={upClicked}>
-        <ThumbUpIcon />
+        Vote now !
       </button>
-      <button onClick={HandleDownVote} disabled={downClicked}>
+      {/* <button onClick={HandleDownVote} disabled={downClicked}>
         <ThumbDownIcon />
-      </button>
-      <p>{votes} votes</p>
+      </button> */}
+      <p>{votes} </p>
     </>
   );
 };

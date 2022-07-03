@@ -3,11 +3,11 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import { getArticles } from "./Utils/Axios";
+import { getArticles, getArticleBytopic } from "./Utils/Axios";
 import { useState } from "react";
 
-const MenuPopupState = ({ setSorted, setSortByCat }) => {
-  const [order, setOrder] = useState("");
+const MenuPopupState = ({ setSorted, setSortByCat, slug, setSortCat }) => {
+  const [order, setOrder] = useState(null);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -19,10 +19,17 @@ const MenuPopupState = ({ setSorted, setSortByCat }) => {
   };
 
   const handleClick = () => {
-    getArticles(order).then((response) => {
-      setSortByCat(response);
-      setSorted(true);
-    });
+    {
+      window.location.pathname == "/articles"
+        ? getArticles(order).then((response) => {
+            setSortByCat(response);
+            setSorted(true);
+          })
+        : getArticleBytopic(slug, order).then((response) => {
+            setSortCat(response);
+            setSorted(true);
+          });
+    }
   };
 
   return (
